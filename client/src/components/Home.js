@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Header from './Header/Header';
-import Video1 from './Body/Video1';
+import Video1 from './Body/Video';
 import Picture1 from './Body/Picture1';
 import Banner from './Body/Banner';
 import Picture2 from './Body/Picture2';
@@ -12,8 +12,6 @@ import Footer from './Footer/Footer';
 const HeaderContainer = styled.div`
   grid-row: 1 / 2;
   grid-column: 1 / -1;
-
-  background-color: red;
 `;
 
 const BodyContainer = styled.div`
@@ -21,7 +19,7 @@ const BodyContainer = styled.div`
   grid-column: 1 / -1;
 
   display: grid;
-  grid-template-rows: 85.5vh 100vh 50vh 100vh 100vh;
+  grid-template-rows: 89.5vh 100vh 50vh 100vh 100vh;
 `;
 
 const FooterContainer = styled.div`
