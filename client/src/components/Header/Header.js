@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { IoMdSearch } from 'react-icons/io';
+import { IconContext } from 'react-icons';
 
 const HeaderItemsBox = styled.div`
   height: 100%;
+  padding: 3rem;
 
   display: flex;
   align-items: center;
@@ -11,15 +15,33 @@ const HeaderItemsBox = styled.div`
 
 const SearchGlass = styled.div`
   margin-right: auto;
+  cursor: pointer;
 `;
 
 export default () => {
   return (
     <HeaderItemsBox>
-      <SearchGlass>1</SearchGlass>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
+      <SearchGlass>
+        <Link to="/search">
+          <IconContext.Provider value={{ size: '3.5rem' }}>
+            <IoMdSearch />
+          </IconContext.Provider>
+        </Link>
+      </SearchGlass>
+      <div style={{ padding: '2rem', fontSize: '2rem' }}>VSCO</div>
+      <div style={{ padding: '2rem', fontSize: '2rem' }}>Feed</div>
+      <div style={{ padding: '2rem', fontSize: '2rem' }}>Sign In</div>
+      <div
+        style={{
+          padding: '2rem',
+          fontSize: '2rem',
+          color: 'white',
+          fontWeight: 'bold',
+          backgroundColor: 'black'
+        }}
+      >
+        Get the App
+      </div>
     </HeaderItemsBox>
   );
 };
