@@ -1,7 +1,14 @@
-.container {
+.home_container {
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-rows: 14.5vh 435.5vh 33vh;
   grid-template-columns: 33vw 33vw 33vw;
+}
+
+.search_container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 64vh 36vh;
 }
