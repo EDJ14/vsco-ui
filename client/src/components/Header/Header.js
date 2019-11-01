@@ -24,6 +24,12 @@ const SearchGlass = styled.div`
   cursor: pointer;
 `;
 
+const HeaderButtons = styled.div`
+  padding: 2rem;
+  font-size: 1.35rem;
+  font-weight: ${props => props.bold};
+`;
+
 export default () => {
   return (
     <HeaderContainer>
@@ -35,13 +41,17 @@ export default () => {
             </IconContext.Provider>
           </Link>
         </SearchGlass>
-        <div style={{ padding: '2rem', fontSize: '2rem' }}>VSCO</div>
-        <div style={{ padding: '2rem', fontSize: '2rem' }}>Feed</div>
-        <div style={{ padding: '2rem', fontSize: '2rem' }}>Sign In</div>
+        <HeaderButtons bold={'bold'}>VSCO</HeaderButtons>
+        <HeaderButtons>Feed</HeaderButtons>
+        <HeaderButtons>Sign In</HeaderButtons>
         <div
           style={{
-            padding: '.5rem 1.5rem',
-            fontSize: '2rem',
+            width: '13rem',
+            height: '4.5rem',
+            textAlign: 'center',
+            lineHeight: '4.4rem',
+            borderRadius: '.3rem',
+            fontSize: '1.35rem',
             color: 'white',
             fontWeight: 'bold',
             backgroundColor: 'black'
