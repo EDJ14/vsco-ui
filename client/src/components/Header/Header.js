@@ -41,7 +41,9 @@ export default () => {
             </IconContext.Provider>
           </Link>
         </SearchGlass>
-        <HeaderButtons bold={'bold'}>VSCO</HeaderButtons>
+        <HeaderButtons bold={'bold'}>
+          <Link to="/">VSCO</Link>
+        </HeaderButtons>
         <HeaderButtons>Feed</HeaderButtons>
         <HeaderButtons>Sign In</HeaderButtons>
         <div

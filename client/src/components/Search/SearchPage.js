@@ -12,7 +12,7 @@ const SearchSection = styled.div`
 
   display: grid;
   grid-template-rows: 14.5vh 49.5vh;
-  grid-template-columns: 27vw 50vw 23vw;
+  grid-template-columns: 27vw 45vw 28vw;
 `;
 
 const FootSection = styled.div`
