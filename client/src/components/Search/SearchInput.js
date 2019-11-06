@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const InputContainer = styled.div`
-  grid-row: 2 / -1;
+  grid-row: 2 / 3;
   grid-column: 2 / 3;
 
   display: grid;
@@ -38,18 +38,42 @@ const SearchCategories = styled.div`
   margin-right: 2rem;
 `;
 
-const handleClick = () => {};
+const Results = styled.div`
+  grid-row: 3 / 4;
+  grid-column: 1 / -1;
+  height: 30vh;
+  background-color: red;
+`;
 
-export default props => {
-  return (
-    <InputContainer>
-      <Input placeholder={'Search'}></Input>
-      <Underline />
-      <SearchCategoriesCont>
-        <SearchCategories>People</SearchCategories>
-        <SearchCategories>Images</SearchCategories>
-        <SearchCategories>Journal</SearchCategories>
-      </SearchCategoriesCont>
-    </InputContainer>
-  );
-};
+class SearchInput extends Component {
+  state = { searchTerm: '' };
+
+  renderResults = () => {
+    console.log('running');
+    return this.state.searchTerm.length == 0 ? null : <Results />;
+  };
+
+  handleClick = e => {};
+
+  render() {
+    console.log(this.state.searchTerm.length);
+    return [
+      <InputContainer>
+        <Input
+          placeholder={'Search'}
+          value={this.state.searchTerm}
+          onChange={e => this.setState({ searchTerm: e.target.value })}
+        ></Input>
+        <Underline />
+        <SearchCategoriesCont>
+          <SearchCategories>People</SearchCategories>
+          <SearchCategories>Images</SearchCategories>
+          <SearchCategories>Journal</SearchCategories>
+        </SearchCategoriesCont>
+      </InputContainer>,
+      this.renderResults()
+    ];
+  }
+}
+
+export default SearchInput;

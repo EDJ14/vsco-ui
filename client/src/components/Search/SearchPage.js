@@ -11,7 +11,7 @@ const SearchSection = styled.div`
   grid-row: 1 / 2;
 
   display: grid;
-  grid-template-rows: 14.5vh 49.5vh;
+  grid-template-rows: 14.5vh 29.5vh 20vh;
   grid-template-columns: 27vw 45vw 28vw;
 `;
 
