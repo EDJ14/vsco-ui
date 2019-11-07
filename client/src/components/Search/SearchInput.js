@@ -41,7 +41,7 @@ const SearchCategories = styled.div`
 const Results = styled.div`
   grid-row: 3 / 4;
   grid-column: 1 / -1;
-  height: 30vh;
+  height: 70vh;
   background-color: red;
 `;
 
@@ -50,7 +50,7 @@ class SearchInput extends Component {
 
   renderResults = () => {
     console.log('running');
-    return this.state.searchTerm.length == 0 ? null : <Results />;
+    return this.state.searchTerm.length == 0 ? <div /> : <Results />;
   };
 
   handleClick = e => {};

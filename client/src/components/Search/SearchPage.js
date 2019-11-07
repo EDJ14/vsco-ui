@@ -8,10 +8,10 @@ import SearchInput from './SearchInput';
 const SearchSection = styled.div`
   width: 100%;
   background-color: white;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
 
   display: grid;
-  grid-template-rows: 14.5vh 29.5vh 20vh;
+  grid-template-rows: 14.5vh 29.5vh min-content;
   grid-template-columns: 27vw 45vw 28vw;
 `;
 
