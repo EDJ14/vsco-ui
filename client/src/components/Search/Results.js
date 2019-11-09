@@ -11,19 +11,19 @@ const ResultsContainer = styled.div`
 `;
 
 class Results extends Component {
-  state = { searhTerm: '' };
-
   listArticles = async term => {
-    const query = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=${keys.NYTkey}`;
+    const query = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=${keys.NYTkey}`;
 
     const res = await axios.get(query);
-
-    console.log(res.data.response.docs);
+    return res.data.response.docs.map(article => <div>{article.headline}</div>);
   };
 
   render() {
-    this.listArticles();
-    return <ResultsContainer />;
+    return (
+      <ResultsContainer>
+        {this.listArticles(this.props.searchTerm)}
+      </ResultsContainer>
+    );
   }
 }
 

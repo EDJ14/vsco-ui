@@ -45,7 +45,11 @@ class SearchInput extends Component {
 
   renderResults = () => {
     console.log('running');
-    return this.state.searchTerm.length == 0 ? <div /> : <Results />;
+    return this.state.searchTerm.length == 0 ? (
+      <div />
+    ) : (
+      <Results input={this.state.searchTerm} />
+    );
   };
 
   handleClick = e => {};
