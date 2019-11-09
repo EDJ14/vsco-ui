@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Results from './Results';
+
 const InputContainer = styled.div`
   grid-row: 2 / 3;
   grid-column: 2 / 3;
@@ -36,13 +38,6 @@ const SearchCategories = styled.div`
   font-size: 1.5rem;
   color: ${props => (props.color ? 'black' : 'grey')};
   margin-right: 2rem;
-`;
-
-const Results = styled.div`
-  grid-row: 3 / 4;
-  grid-column: 1 / -1;
-  height: 70vh;
-  background-color: red;
 `;
 
 class SearchInput extends Component {
