@@ -11,22 +11,37 @@ const ResultsContainer = styled.div`
 `;
 
 class Results extends Component {
+  state = { results: '' };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.input == nextProps.input) {
+      return false;
+    }
+    return true;
+  }
+
   listArticles = async term => {
+    if (term.length == 0) {
+      return;
+    }
+
     const query = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=${keys.NYTkey}`;
 
     const res = await axios.get(query);
 
-    const headlines = res.data.response.docs.map(article => {
-      return <div>{article.headline.main}</div>;
+    this.setState({
+      results: res.data.response.docs.map(article => {
+        return <div>{article.headline.main}</div>;
+      })
     });
-    console.log(Array.from(headlines));
-    return Array.from(headlines);
   };
 
   render() {
+    console.log('rendering');
+    this.listArticles(this.props.input);
     return (
       <ResultsContainer>
-        {this.listArticles(this.props.searchTerm)}
+        <div>{this.state.results}</div>
       </ResultsContainer>
     );
   }
