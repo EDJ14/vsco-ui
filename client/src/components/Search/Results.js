@@ -15,7 +15,12 @@ class Results extends Component {
     const query = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=${keys.NYTkey}`;
 
     const res = await axios.get(query);
-    return res.data.response.docs.map(article => <div>{article.headline}</div>);
+
+    const headlines = res.data.response.docs.map(article => {
+      return <div>{article.headline.main}</div>;
+    });
+    console.log(Array.from(headlines));
+    return Array.from(headlines);
   };
 
   render() {
