@@ -16,7 +16,7 @@ const Pic1Container = styled.div`
 export default () => {
   return (
     <Pic1Container>
-      <img src={pic_1} />
+      <img src={pic_1} style={{ width: '100%' }} />
     </Pic1Container>
   );
 };
