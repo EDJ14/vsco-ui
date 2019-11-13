@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import Footer from '../Footer/Footer';
-import SearchInput from './SearchInput';
+import Footer from "../Footer/Footer";
+import SearchInput from "./SearchInput";
 
 const SearchSection = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ const SearchSection = styled.div`
   grid-row: 2 / 3;
 
   display: grid;
-  grid-template-rows: 14.5vh 29.5vh min-content;
+  grid-template-rows: 1vh auto 32vh;
   grid-template-columns: 27vw 45vw 28vw;
 `;
 

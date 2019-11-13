@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
-import Results from './Results';
+import Results from "./Results";
 
 const InputContainer = styled.div`
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 
   display: grid;
-  grid-template-rows: 0.5fr 1fr 0.1fr 0.25fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 0.1fr 0.25fr 1fr;
 `;
 
 const Input = styled.input`
@@ -36,15 +36,15 @@ const SearchCategoriesCont = styled.div`
 
 const SearchCategories = styled.div`
   font-size: 1.5rem;
-  color: ${props => (props.color ? 'black' : 'grey')};
+  color: ${props => (props.color ? "black" : "grey")};
   margin-right: 2rem;
 `;
 
 class SearchInput extends Component {
-  state = { searchTerm: '' };
+  state = { searchTerm: "" };
 
   renderResults = () => {
-    console.log('running');
+    console.log("running");
     return this.state.searchTerm.length == 0 ? (
       <div />
     ) : (
@@ -59,7 +59,7 @@ class SearchInput extends Component {
     return [
       <InputContainer>
         <Input
-          placeholder={'Search'}
+          placeholder={"Search"}
           value={this.state.searchTerm}
           onChange={e => this.setState({ searchTerm: e.target.value })}
         ></Input>

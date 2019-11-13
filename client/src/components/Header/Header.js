@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { IoMdSearch } from 'react-icons/io';
-import { IconContext } from 'react-icons';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { IoMdSearch } from "react-icons/io";
+import { IconContext } from "react-icons";
 
 const HeaderContainer = styled.div`
-  height: 14.5vh;
+  height: 13vh;
   width: 100%;
   position: absolute;
 `;
@@ -36,27 +36,27 @@ export default () => {
       <HeaderItemsBox>
         <SearchGlass>
           <Link to="/search">
-            <IconContext.Provider value={{ size: '3.5rem' }}>
+            <IconContext.Provider value={{ size: "3.5rem" }}>
               <IoMdSearch />
             </IconContext.Provider>
           </Link>
         </SearchGlass>
-        <HeaderButtons bold={'bold'}>
+        <HeaderButtons bold={"bold"}>
           <Link to="/">VSCO</Link>
         </HeaderButtons>
         <HeaderButtons>Feed</HeaderButtons>
         <HeaderButtons>Sign In</HeaderButtons>
         <div
           style={{
-            width: '13rem',
-            height: '4.5rem',
-            textAlign: 'center',
-            lineHeight: '4.4rem',
-            borderRadius: '.3rem',
-            fontSize: '1.35rem',
-            color: 'white',
-            fontWeight: 'bold',
-            backgroundColor: 'black'
+            width: "13rem",
+            height: "4.5rem",
+            textAlign: "center",
+            lineHeight: "4.4rem",
+            borderRadius: ".3rem",
+            fontSize: "1.35rem",
+            color: "white",
+            fontWeight: "bold",
+            backgroundColor: "black"
           }}
         >
           Get the App
