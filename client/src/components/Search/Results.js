@@ -10,6 +10,11 @@ const ResultsContainer = styled.div`
   background-color: red;
 `;
 
+const HeadlineButtons = styled.div`
+  width: 3rem;
+  background-color: black;
+`;
+
 class Results extends Component {
   state = { results: '' };
 
@@ -31,7 +36,7 @@ class Results extends Component {
 
     this.setState({
       results: res.data.response.docs.map(article => {
-        return <div>{article.headline.main}</div>;
+        return <HeadlineButtons>{article.headline.main}</HeadlineButtons>;
       })
     });
   };
