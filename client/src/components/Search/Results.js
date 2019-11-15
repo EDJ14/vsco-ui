@@ -8,11 +8,16 @@ const ResultsContainer = styled.div`
   grid-column: 1 / -1;
   height: 70vh;
   background-color: red;
+
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 const HeadlineButtons = styled.div`
   width: 3rem;
   background-color: black;
+  color: white;
 `;
 
 class Results extends Component {
@@ -20,13 +25,16 @@ class Results extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.input == nextProps.input) {
+      console.log('didnt update');
       return false;
     }
     return true;
   }
 
   listArticles = async term => {
+    console.log(this.props);
     if (term.length == 0) {
+      console.log('returned');
       return;
     }
 
@@ -44,11 +52,7 @@ class Results extends Component {
   render() {
     console.log('rendering');
     this.listArticles(this.props.input);
-    return (
-      <ResultsContainer>
-        <div>{this.state.results}</div>
-      </ResultsContainer>
-    );
+    return <ResultsContainer>{this.state.results}</ResultsContainer>;
   }
 }
 
