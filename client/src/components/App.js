@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Home';
 import SearchPage from './Search/SearchPage';
 import Header from './Header/Header';
+import CitySearch from './Search/CitySearch';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/city" component={CitySearch} />
         </BrowserRouter>
       </div>
     );
