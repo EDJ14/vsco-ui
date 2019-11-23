@@ -4,9 +4,28 @@ import axios from 'axios';
 
 import keys from '../../config/keys';
 
+const CityContainer = styled.div`
+  width: 100%;
+  height: 87vh;
+  position: absolute;
+  bottom: 0;
+  background-color: gray;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const CityInput = styled.input`
+  width: 35rem;
+  height: 5rem;
+  font-size: 4rem;
+`;
+
 const CitySuggestBox = styled.div`
-  width: max-content;
-  background-color: black;
+  width: 35rem;
+  height: 5rem;
+  font-size: 4rem;
 
   display: flex;
   flex-direction: column;
@@ -16,6 +35,10 @@ const CitySuggestBox = styled.div`
 const CitySearchItem = styled.div`
   width: 100%;
   color: white;
+
+  &:hover {
+    color: black;
+  }
 `;
 
 const CitySearch = props => {
@@ -34,7 +57,6 @@ const CitySearch = props => {
 
     return timeoutState(
       setTimeout(async () => {
-        console.log('tuneitState');
         const instance = axios.create({
           baseURL: 'https://wft-geo-db.p.rapidapi.com',
           timeout: 1000,
@@ -68,14 +90,12 @@ const CitySearch = props => {
     );
   };
 
-  return [
-    <input
-      style={{ margin: '15rem' }}
-      value={term}
-      onChange={e => autoCities(e, timeout)}
-    />,
-    renderCitySuggest()
-  ];
+  return (
+    <CityContainer>
+      <CityInput value={term} onChange={e => autoCities(e, timeout)} />
+      {renderCitySuggest()}
+    </CityContainer>
+  );
 };
 
 export default CitySearch;
