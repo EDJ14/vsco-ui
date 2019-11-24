@@ -5,6 +5,7 @@ import Home from './Home';
 import SearchPage from './Search/SearchPage';
 import Header from './Header/Header';
 import CitySearch from './Search/CitySearch';
+import Charts from './Charts';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/city" component={CitySearch} />
+          <Route exact path="/chart" component={Charts} />
         </BrowserRouter>
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -25,7 +25,7 @@ const CityInput = styled.input`
 const CitySuggestBox = styled.div`
   width: 35rem;
   height: 5rem;
-  font-size: 4rem;
+  font-size: 1.5rem;
 
   display: flex;
   flex-direction: column;
@@ -47,8 +47,11 @@ const CitySearch = props => {
   const [showSuggestions, setShowSuggestions] = useState(0);
   const [suggestions, setSuggestions] = useState([]);
 
+  useEffect(() => {});
+
   const autoCities = (e, timeout) => {
     setTerm(e.target.value);
+
     e.target.value.length == 0 ? setShowSuggestions(0) : setShowSuggestions(1);
 
     if (timeout) {
@@ -62,8 +65,7 @@ const CitySearch = props => {
           timeout: 1000,
           headers: {
             'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
-            'x-rapidapi-key':
-              '1c6be6c2c1msh899c6cdcf251ceep17fbafjsn92fd12f82cb0'
+            'x-rapidapi-key': keys.rapidAPI
           }
         });
 
@@ -71,7 +73,13 @@ const CitySearch = props => {
           `/v1/geo/cities?limit=5&offset=0&namePrefix=${term}`
         );
 
-        setSuggestions(res.data.data.map(result => result.city));
+        setSuggestions(
+          res.data.data.map(result => [
+            result.city,
+            result.region,
+            result.country
+          ])
+        );
       }, 500)
     );
   };
@@ -80,11 +88,12 @@ const CitySearch = props => {
     if (!showSuggestions) {
       return;
     }
-
     return (
       <CitySuggestBox>
         {suggestions.map(city => (
-          <CitySearchItem>{city}</CitySearchItem>
+          <CitySearchItem>
+            {city[0] + ', ' + city[1] + ', ' + city[2]}
+          </CitySearchItem>
         ))}
       </CitySuggestBox>
     );
