@@ -6,7 +6,7 @@ import keys from '../../config/keys';
 
 const CityContainer = styled.div`
   width: 100%;
-  height: 87vh;
+  height: 87vh; 
   position: absolute;
   bottom: 0;
   background-color: gray;
@@ -88,6 +88,7 @@ const CitySearch = props => {
     if (!showSuggestions) {
       return;
     }
+    
     return (
       <CitySuggestBox>
         {suggestions.map(city => (

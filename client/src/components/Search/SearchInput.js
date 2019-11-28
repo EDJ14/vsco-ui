@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import axios from 'axios';
+import keys from '../../config/keys';
 import Results from './Results';
 
 const InputContainer = styled.div`
@@ -41,27 +42,38 @@ const SearchCategories = styled.div`
 `;
 
 class SearchInput extends Component {
-  state = { searchTerm: '' };
+  state = { searchTerm: '', timeout: 0 };
 
-  renderResults = () => {
-    console.log('running');
-    return this.state.searchTerm.length == 0 ? (
-      <div />
-    ) : (
-      <Results input={this.state.searchTerm} />
-    );
+  renderResults = e => {
+    this.setState({ searchTerm: e.target.value });
+
+    if (this.state.timeout) {
+      clearTimeout(this.state.timeout);
+    }
+
+    return this.setState({
+      timeout: setTimeout(async () => {
+        const instance = axios.create({
+          baseURL: 'https://api.nytimes.com',
+          timeout: 5000
+        });
+
+        const res = await instance.get(
+          `/svc/search/v2/articlesearch.json?q=${this.state.searchTerm}&api-key=${keys.NYTkey}`
+        );
+
+        console.log('RES', res);
+      }, 500)
+    });
   };
 
-  handleClick = e => {};
-
   render() {
-    console.log(this.state.searchTerm.length);
-    return [
+    return (
       <InputContainer>
         <Input
           placeholder={'Search'}
           value={this.state.searchTerm}
-          onChange={e => this.setState({ searchTerm: e.target.value })}
+          onChange={e => this.renderResults(e)}
         ></Input>
         <Underline />
         <SearchCategoriesCont>
@@ -69,9 +81,8 @@ class SearchInput extends Component {
           <SearchCategories>Images</SearchCategories>
           <SearchCategories>Journal</SearchCategories>
         </SearchCategoriesCont>
-      </InputContainer>,
-      this.renderResults()
-    ];
+      </InputContainer>
+    );
   }
 }
 
