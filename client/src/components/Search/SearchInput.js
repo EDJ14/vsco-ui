@@ -45,7 +45,14 @@ class SearchInput extends Component {
   state = { searchTerm: '', timeout: 0, results: [] };
 
   renderResults = e => {
-    this.setState({ searchTerm: e.target.value });
+    console.log('e', e.target.value);
+    this.setState({ searchTerm: e.target.value, showResults: 1 });
+
+    if (e.target.value == 0) {
+      console.log('0 length');
+      this.setState({ results: [] });
+      return;
+    }
 
     if (this.state.timeout) {
       clearTimeout(this.state.timeout);
@@ -73,6 +80,8 @@ class SearchInput extends Component {
     return [
       <InputContainer>
         <Input
+          autoFocus
+          className={'search-input'}
           placeholder={'Search'}
           value={this.state.searchTerm}
           onChange={e => this.renderResults(e)}
