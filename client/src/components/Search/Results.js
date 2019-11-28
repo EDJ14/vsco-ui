@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ResultsContainer = styled.div`
@@ -18,15 +18,15 @@ const HeadlineButtons = styled.div`
   color: white;
 `;
 
-class Results extends Component {
-  listArticles = props => {
-    console.log(props);
-  };
-
-  render() {
-    this.listArticles(this.props);
-    return <ResultsContainer>{'this.state.results'}</ResultsContainer>;
-  }
-}
+const Results = props => {
+  console.log(props);
+  return (
+    <ResultsContainer>
+      {props.articles.map(article => (
+        <HeadlineButtons>{article.headline.main}</HeadlineButtons>
+      ))}
+    </ResultsContainer>
+  );
+};
 
 export default Results;

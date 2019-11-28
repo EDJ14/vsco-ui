@@ -42,7 +42,7 @@ const SearchCategories = styled.div`
 `;
 
 class SearchInput extends Component {
-  state = { searchTerm: '', timeout: 0 };
+  state = { searchTerm: '', timeout: 0, results: [] };
 
   renderResults = e => {
     this.setState({ searchTerm: e.target.value });
@@ -62,13 +62,15 @@ class SearchInput extends Component {
           `/svc/search/v2/articlesearch.json?q=${this.state.searchTerm}&api-key=${keys.NYTkey}`
         );
 
-        console.log('RES', res);
+        this.setState({
+          results: <Results articles={res.data.response.docs} />
+        });
       }, 500)
     });
   };
 
   render() {
-    return (
+    return [
       <InputContainer>
         <Input
           placeholder={'Search'}
@@ -81,8 +83,9 @@ class SearchInput extends Component {
           <SearchCategories>Images</SearchCategories>
           <SearchCategories>Journal</SearchCategories>
         </SearchCategoriesCont>
-      </InputContainer>
-    );
+      </InputContainer>,
+      this.state.results
+    ];
   }
 }
 
